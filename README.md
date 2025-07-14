@@ -24,6 +24,7 @@ Distributions of training and testing data. Training areas are marked in white, 
 
 # How to cite our work
 If you find this useful, consider citing our work:
+
 Li, J., Wang, Y., Sheng, Q., Wu, Z., Wang, B., Ling, X., Du, Y., Gao, F., Camps-Vall, G., Molinier, M., 2025. CloudRuler: Rule-based transformer for cloud removal in Landsat images. Remote Sens. Environ. xx, 114913.
 
 ```
