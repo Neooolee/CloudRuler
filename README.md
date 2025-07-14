@@ -15,10 +15,26 @@ Code snippets and demos can be found in this repository.
 
 # Data
 The training dataset is on:
-Distributions of training and testing data. Training areas are marked in white, testing areas are marked in black. The landcover background is derived from 300 m annual global land cover time series from 1992 to 2015 (Defourny et al., 2017)  
+Distributions of training and testing data. Training areas are marked in white, testing areas are marked in red. The land cover basemap is Annual_NLCD_LndCov_2023_CU_C1V0 product from U.S. Geological Survey (USGS). 
 ![WHUS2-CR.jpg](https://github.com/Neooolee/CloudRuler/blob/main/Data.jpg) 
 
 
 # How to cite our work
 If you find this useful, consider citing our work:
 Li, J., Wang, Y., Sheng, Q., Wu, Z., Wang, B., Ling, X., Du, Y., Gao, F., Camps-Vall, G., Molinier, M., 2025. A hybrid generative adversarial network for weakly-supervised cloud detection in multispectral images. Remote Sens. Environ. xx, 114913.
+
+```
+@article {A hybrid generative adversarial network for weakly-supervised cloud detection in multispectral images,
+  author = {Jun Li, Yihui Wang, Qinghong Sheng, Zhaocong Wu, Bo Wang, Xiao Ling, Xiang Liu, Yang Du, Fan Gao, Gustau Camps-Valls, Matthieu Molinier<br>},
+  title = {CloudRuler: Rule-based transformer for cloud removal in Landsat images},
+  volume = {280},
+  number = {},
+  elocation-id = {},
+  year = {2025},
+  doi = {10.1016/j.rse.2025.114913},
+  publisher = {Elsevier Inc.},
+  URL = {},
+  eprint = {},
+  journal = {Remote Sensing of Environment}
+}
+```
