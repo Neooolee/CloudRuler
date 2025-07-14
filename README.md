@@ -16,7 +16,7 @@ Code snippets and demos can be found in this repository.
 # Data
 The training dataset is on:
 Distributions of training and testing data. Training areas are marked in white, testing areas are marked in black. The landcover background is derived from 300 m annual global land cover time series from 1992 to 2015 (Defourny et al., 2017)  
-![WHUS2-CR.png]([https://i.loli.net/2020/12/23/XSh6YCA23fnMQiZ.png](https://github.com/Neooolee/CloudRuler/blob/main/Data.jpg)) 
+![WHUS2-CR.jpg]([https://i.loli.net/2020/12/23/XSh6YCA23fnMQiZ.png](https://github.com/Neooolee/CloudRuler/blob/main/Data.jpg)) 
 
 
 # How to cite our work
