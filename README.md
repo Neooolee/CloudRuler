@@ -16,7 +16,7 @@ Clouds are a key factor influencing transmission of the radiance signal in optic
 Code snippets and demos can be found in this repository. 
 
 # Data
-The NUAA-CR4L8/9 dataset is on:
+The NUAA-CR4L8/9 dataset is on: https://doi.org/10.5281/zenodo.15892748.
 
 Distributions of training and testing data. Training areas are marked in white, testing areas are marked in red. The land cover basemap is Annual_NLCD_LndCov_2023_CU_C1V0 product from U.S. Geological Survey (USGS). 
 ![NUAA-CR4L8/9.jpg](https://github.com/Neooolee/CloudRuler/blob/main/Data.jpg) 
