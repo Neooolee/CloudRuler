@@ -2,7 +2,7 @@
 
 This repo contains information and code of the Rule-based cloud removal transformer for remote sensing images presented in the work.
 
-Li, J., Wang, Y., Sheng, Q., Wu, Z., Wang, B., Ling, X., Du, Y., Gao, F., Camps-Vall, G., Molinier, M., 2025. CloudRuler: Rule-based transformer for cloud removal in Landsat images. Remote Sens. Environ. xx, 114913.
+Li, J., Wang, Y., Sheng, Q., Wu, Z., Wang, B., Ling, X., Liu, X., Du, Y., Gao, F., Camps-valls, G., Molinier, M., 2025. CloudRuler : Rule-based transformer for cloud removal in Landsat images. Remote Sens. Environ. 328, 114913. https://doi.org/10.1016/j.rse.2025.114913
 
 ![CloudRuler.jpg](https://github.com/Neooolee/CloudRuler/blob/main/Model.jpg).
 
@@ -25,13 +25,13 @@ Distributions of training and testing data. Training areas are marked in white, 
 # How to cite our work
 If you find this useful, consider citing our work:
 
-Li, J., Wang, Y., Sheng, Q., Wu, Z., Wang, B., Ling, X., Du, Y., Gao, F., Camps-Vall, G., Molinier, M., 2025. CloudRuler: Rule-based transformer for cloud removal in Landsat images. Remote Sens. Environ. xx, 114913.
+Li, J., Wang, Y., Sheng, Q., Wu, Z., Wang, B., Ling, X., Liu, X., Du, Y., Gao, F., Camps-valls, G., Molinier, M., 2025. CloudRuler : Rule-based transformer for cloud removal in Landsat images. Remote Sens. Environ. 328, 114913.
 
 ```
 @article {CloudRuler: Rule-based transformer for cloud removal in Landsat images,
   author = {Jun Li, Yihui Wang, Qinghong Sheng, Zhaocong Wu, Bo Wang, Xiao Ling, Xiang Liu, Yang Du, Fan Gao, Gustau Camps-Valls, Matthieu Molinier<br>},
   title = {CloudRuler: Rule-based transformer for cloud removal in Landsat images},
-  volume = {280},
+  volume = {328},
   number = {},
   elocation-id = {},
   year = {2025},
