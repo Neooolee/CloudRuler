@@ -50,18 +50,18 @@ class maintrain(object):
     def __init__(self,device):
         super(maintrain, self).__init__()
         self.device=device
-        self.G_Net = CloudRuler(indim=3,outdim=3,resolution=args.image_size,gfdim=48)
-        self.G_Net.to(device)
-        self.G_Net.train()
-        self.g_optimizer = torch.optim.Adam(self.G_Net.parameters(),lr=args.base_lr,betas=(args.beta1,args.beta2))
+        self.Net = CloudRuler(indim=3,outdim=3,resolution=args.image_size,gfdim=48)
+        self.Net.to(device)
+        self.Net.train()
+        self.optimizer = torch.optim.Adam(self.Net.parameters(),lr=args.base_lr,betas=(args.beta1,args.beta2))
 
     def train_step(self,ximage_list,yimage_list,lr):
-        for param_group in self.g_optimizer.param_groups:
+        for param_group in self.optimizer.param_groups:
             param_group['lr']=lr
         
         ximages=ximage_list[0].to(self.device).permute(0,3,1,2).clip(0,1)[:,1:4]
         yimages=yimage_list[0].to(self.device).permute(0,3,1,2).clip(0,1)[:,1:4]
-        fake_y_list=self.G_Net(ximages)
+        fake_y_list=self.Net(ximages)
 
         fgx,fgy=grad(fake_y_list)
         gx,gy=grad(yimages)
@@ -69,9 +69,9 @@ class maintrain(object):
         +0.5*torch.sum(torch.mean(torch.abs(fgx-gx),dim=[0,2,3]))\
         +0.5*torch.sum(torch.mean(torch.abs(fgy-gy),dim=[0,2,3]))
 
-        self.g_optimizer.zero_grad()
+        self.optimizer.zero_grad()
         nll_loss.backward()
-        self.g_optimizer.step()
+        self.optimizer.step()
 
         return nll_loss,nll_loss,fake_y_list.permute(0,2,3,1).clip(0,1) 
     def train(self,y_datalists,batch_size,lrbz):
@@ -80,12 +80,11 @@ class maintrain(object):
         start_epoch=1
         step=1
         if checkpoint is not None:
-            self.G_Net.load_state_dict(checkpoint['g_state_dict'])
-            self.g_optimizer.load_state_dict(checkpoint['goptimizer_state_dict'])
+            self.Net.load_state_dict(checkpoint['state_dict'])
             start_epoch=checkpoint['epoch']
             step=checkpoint['step']
         writer=SummaryWriter(args.snapshot_dir)
-        print(network_parameters(self.G_Net))
+        print(network_parameters(self.Net))
         leny=len(y_datalists)
         start_epoch=(step*batch_size)//leny+1
         scale=1
@@ -113,7 +112,7 @@ class maintrain(object):
                 step=step+1 
                 if step% args.summary_pred_every == 0: #每过summary_pred_every次保存训练日志
                     writer.add_scalar("loss",gl.data.cpu().numpy(),step)
-                    writer.add_scalar("lr",self.g_optimizer.param_groups[0]['lr'],step)
+                    writer.add_scalar("lr",self.optimizer.param_groups[0]['lr'],step)
 
                 if step % args.write_pred_every == 0: #每过write_pred_every次写一下训练的可视化结果
                     write_image = get_write_picture([[batch_inputx_img["img"].cpu().numpy()[0,:,:,1:4],
@@ -124,7 +123,7 @@ class maintrain(object):
                     print('epoch step     a_loss    d_loss    lr')
                     print('{:d}     {:d}    {:.3f}    {:.3f}    {:.8f} '.format(epoch,step,gl,dl,lr))
             if epoch%10 == 0:
-                save_ckpt({'epoch':epoch,'step':step,'g_state_dict':self.G_Net.state_dict(),'goptimizer_state_dict': self.g_optimizer.state_dict()},args.snapshot_dir)
+                save_ckpt({'epoch':epoch,'step':step,'state_dict':self.Net.state_dict(),args.snapshot_dir)
 
 def main():
     if torch.cuda.is_available():
