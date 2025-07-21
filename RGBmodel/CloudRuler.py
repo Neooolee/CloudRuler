@@ -137,7 +137,7 @@ class CloudRuler(nn.Module):
             x=self.upattblocks[-i](x,self.freqs_cis,self.w[:,:,:self.resolutions[-i-1],:self.resolutions[-i-1]])
         #PM-FS
         x = self.conv_tr(x)
-        x=x[:,:self.gfdim]*b+x[:,self.gfdim:]+b
+        x=x[:,:self.gfdim]*b-x[:,self.gfdim:]+b
         x=self.conv_out(x)
         return x
 
