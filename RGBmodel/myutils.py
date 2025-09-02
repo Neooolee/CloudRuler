@@ -159,3 +159,8 @@ def lr_decay(global_steps,baselr,start_decay_step=10000,minlr=1e-2,total_step=1e
     lr=np.where(np.greater_equal(global_steps,start_decay_step),
                 sin_decay(global_steps-start_decay_step,baselr,minlr,total_step-start_decay_step,decay_steps),baselr)
     return lr
+
+def grad(src):
+    g_src_x = src[:, :, 1:, :] - src[:, :, :-1, :]
+    g_src_y = src[:, :, :, 1:] - src[:, :, :, :-1]
+    return g_src_x,g_src_y
