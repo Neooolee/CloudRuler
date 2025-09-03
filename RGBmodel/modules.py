@@ -91,8 +91,12 @@ def OverlapDilatedWindowPartion(x, window_size,dilate_rate):#ODWP，x:(b,c,h,w)
     numh=math.ceil(x.shape[-2]/Wsize)
     numw=math.ceil(x.shape[-1]/Wsize)
     x=F.pad(x, (0,numw*Wsize-x.shape[-1],0,numh*Wsize-x.shape[-2]), mode='reflect')#右、下填充
+	#Used in paper
     x=torch.cat([x,F.pad(x[:,:,stride:,:], (0,0,0,stride), mode='reflect')],axis=0)#[原图，向下滑动]
     x=torch.cat([x,F.pad(x[:,:,:,stride:], (0,stride,0,0), mode='reflect')],axis=0)#[原图，向下滑动,原图向右滑动，原图向下向右滑动]
+	#The upgraded version
+	#x=torch.cat([x,torch.roll(x,shifts=-stride,dims=2)],axis=0)#
+    #x=torch.cat([x,torch.roll(x,shifts=-stride,dims=3)],axis=0)
     windows = rearrange(x,"gb c (nh h) (nw w) -> (nh nw gb) c h w",h=Wsize,w=Wsize)
     return windows[:,:,:window_size,:window_size]
 
