@@ -72,5 +72,4 @@ def main(num):
 if __name__ == '__main__':
     ckpt="rgb"
     main(str(ckpt))
-    compute_ps(ckpt)
 
